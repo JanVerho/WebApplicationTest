@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@using Microsoft.AspNetCore.Html;
+
+@{
+    ViewData["Title"] = "Home page";
+
+    string userName = "Jan";
+}
+
+@{
+    // methode om IHtmlContent samenstellen
+    IHtmlContent showAnimal(string animal, int n)
+    {
+        //conditei van de CSS-class
+        string classname = n < 5 ? "class=\"red\"" : "class=\"notRed\"";
+        // return
+        return Html.Raw($"<div {classname}\"> <span> {animal} </span> <span> {n} </span> </div>");
+    }
+}
+
+
+
+
+
+
+
+<div class="text-center">
+    <h1>Show with IHtml methode(<span class="red" style="font-style:italic">using Microsoft.AspNetCore.Html;</span>)</h1>
+    @(showAnimal("dog", 1))
+    @(showAnimal("cat", 1))
+    @showAnimal("horse", 6)
+</div>
+
+
+<div>
+    <p>@@userName &nbsp; @userName</p>
+    <p>@@(userName) &nbsp; @(userName)</p>
+    <p>@@(1 + 2 + 3 + 4)</p>
+    <p>@(1 + 2 + 3 + 4)</p>
+    <p><a href="mailto:Support@contoso.com">Support@contoso.com</a></p>
+    <p><a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-2.0#razor-syntax">aspnetcore-2.0#razor-syntax</a></p>
+</div>
